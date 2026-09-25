@@ -1,0 +1,8 @@
+{
+  "uuid": "docker-containers@hermess",
+  "name": "Docker Containers",
+  "description": "Muestra los contenedores de Docker agrupados por proyecto compose, con la RAM que ocupan. Clic (izquierdo o derecho) abre el menú; desde ahí se levantan, detienen y reinician, y un clic en un contenedor abre sus logs en la terminal.",
+  "shell-version": ["45", "46", "47", "48"],
+  "settings-schema": "org.gnome.shell.extensions.docker-containers",
+  "version": 1
+}

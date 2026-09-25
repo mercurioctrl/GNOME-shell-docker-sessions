@@ -1,0 +1,6 @@
+# Generado por glib-compile-schemas
+schemas/gschemas.compiled
+
+# Contexto local de Claude, no se publica
+CLAUDE.md
+.claude/

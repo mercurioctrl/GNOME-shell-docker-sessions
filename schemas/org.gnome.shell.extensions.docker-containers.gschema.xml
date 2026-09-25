@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.docker-containers"
+          path="/org/gnome/shell/extensions/docker-containers/">
+
+    <key name="docker-command" type="s">
+      <default>'docker'</default>
+      <summary>Binario de docker</summary>
+      <description>Ruta o nombre del ejecutable. Sirve también para podman.</description>
+    </key>
+
+    <key name="terminal-command" type="s">
+      <default>'ghostty -e'</default>
+      <summary>Comando de terminal</summary>
+      <description>Terminal y flag para ejecutar un comando. Ej: "ghostty -e", "gnome-terminal --", "kitty", "alacritty -e".</description>
+    </key>
+
+    <key name="refresh-interval" type="i">
+      <default>30</default>
+      <range min="2" max="300"/>
+      <summary>Intervalo de refresco (segundos)</summary>
+      <description>Cada cuánto se relee la lista de contenedores con el menú cerrado. Con el menú abierto el sondeo es cada 3 s.</description>
+    </key>
+
+    <key name="stats-interval" type="i">
+      <default>10</default>
+      <range min="3" max="300"/>
+      <summary>Intervalo mínimo entre lecturas de RAM/CPU</summary>
+      <description>Solo aplica cuando hay que caer a "docker stats", que tarda unos segundos. Leyendo de cgroups la medición va con cada refresco.</description>
+    </key>
+
+    <key name="memory-source" type="s">
+      <default>'auto'</default>
+      <summary>De dónde salen la RAM y la CPU</summary>
+      <description>auto (cgroups y si no docker stats), cgroup, stats, u off para no medir.</description>
+    </key>
+
+    <key name="group-by-project" type="b">
+      <default>true</default>
+      <summary>Agrupar por proyecto de compose</summary>
+      <description>Una fila por proyecto, con la RAM de todos sus contenedores sumada. Apagado, muestra los contenedores en una sola lista.</description>
+    </key>
+
+    <key name="show-stopped" type="b">
+      <default>false</default>
+      <summary>Mostrar los proyectos totalmente detenidos</summary>
+      <description>Apagado, los proyectos sin nada corriendo van juntos en un submenú "Detenidos".</description>
+    </key>
+
+    <key name="show-pause-button" type="b">
+      <default>false</default>
+      <summary>Mostrar también un botón de pausa</summary>
+      <description>Agrega un ⏸ que corre "docker pause": congela los procesos
+      del contenedor pero se queda con la RAM. El botón de detener
+      ("docker stop") está siempre y es el que libera la memoria.</description>
+    </key>
+
+    <key name="click-action" type="s">
+      <default>'logs'</default>
+      <summary>Acción al hacer clic en un contenedor</summary>
+      <description>logs (abre "docker logs -f" en la terminal), shell (abre una shell adentro), restart, o none.</description>
+    </key>
+
+    <key name="show-count" type="b">
+      <default>true</default>
+      <summary>Mostrar cantidad en el panel</summary>
+      <description>Muestra el número de contenedores corriendo junto al icono.</description>
+    </key>
+
+    <key name="show-memory" type="b">
+      <default>true</default>
+      <summary>Mostrar RAM total en el panel</summary>
+      <description>Suma la memoria de todos los contenedores corriendo y la muestra en la barra.</description>
+    </key>
+
+    <key name="show-detail" type="b">
+      <default>true</default>
+      <summary>Mostrar detalle de cada contenedor</summary>
+      <description>Estado, RAM, CPU, tiempo en línea y puertos publicados.</description>
+    </key>
+
+    <key name="panel-icon" type="s">
+      <default>'🔵'</default>
+      <summary>Icono del panel</summary>
+      <description>Texto o emoji que se muestra en la barra. Los emoji son
+      mapas de bits: los de figura plana aguantan bien el tamaño chico del
+      panel, los ilustrados (🐳, 🐙) se ven pixelados. Un glifo de texto es
+      vectorial y además toma el color del CSS. Ej: "🔵", "🐳", "▣".</description>
+    </key>
+
+    <key name="panel-icon-alert" type="s">
+      <default>'🔴'</default>
+      <summary>Icono del panel cuando algo anda mal</summary>
+      <description>Reemplaza al icono normal mientras haya algo en error. Hace
+      falta porque los emoji ignoran el color del CSS. Vacío para no cambiarlo
+      (con un glifo de texto alcanza con el color).</description>
+    </key>
+
+    <key name="panel-position" type="s">
+      <default>'right'</default>
+      <summary>Posición en el panel</summary>
+      <description>left, center o right.</description>
+    </key>
+
+  </schema>
+</schemalist>
